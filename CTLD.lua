@@ -27,6 +27,7 @@ ctld.Id = "CTLD - "
 
 --- Version.
 ctld.Version = "202401.01"
+--https://github.com/spencershepard/DCS-CTLD/tree/rotorops
 
 -- To add debugging messages to dcs.log, change the following log levels to `true`; `Debug` is less detailed than `Trace`
 ctld.Debug = false
