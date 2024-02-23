@@ -1976,9 +1976,9 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
 
         if _countOrTemplate.inf then
             if _side == 2 then
-                _troops = ctld.insertIntoTroopsArray("Soldier M4",_countOrTemplate.inf,_troops)
+                _troops = ctld.insertIntoTroopsArray("Soldier M4 GRG",_countOrTemplate.inf,_troops)
             else
-                _troops = ctld.insertIntoTroopsArray("Soldier AK",_countOrTemplate.inf,_troops)
+                _troops = ctld.insertIntoTroopsArray("Infantry AK",_countOrTemplate.inf,_troops)
             end
             _weight = _weight + getSoldiersWeight(_countOrTemplate.inf, ctld.RIFLE_WEIGHT)
         end
@@ -2004,9 +2004,9 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
 
         if _countOrTemplate.jtac then
             if _side == 2 then
-                _troops = ctld.insertIntoTroopsArray("Soldier M4",_countOrTemplate.jtac,_troops, "JTAC")
+                _troops = ctld.insertIntoTroopsArray("Soldier M4 GRG",_countOrTemplate.jtac,_troops, "JTAC")
             else
-                _troops = ctld.insertIntoTroopsArray("Soldier AK",_countOrTemplate.jtac,_troops, "JTAC")
+                _troops = ctld.insertIntoTroopsArray("Infantry AK",_countOrTemplate.jtac,_troops, "JTAC")
             end
             _hasJTAC = true
             _weight = _weight + getSoldiersWeight(_countOrTemplate.jtac, ctld.JTAC_WEIGHT + ctld.RIFLE_WEIGHT)
@@ -2015,7 +2015,7 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
     else
         for _i = 1, _countOrTemplate do
 
-            local _unitType = "Soldier AK"
+            local _unitType = "Infantry AK"
 
             if _side == 2 then
                 if _i <=2 then
@@ -2028,7 +2028,7 @@ function ctld.generateTroopTypes(_side, _countOrTemplate, _country)
                     _unitType = "Soldier stinger"
                     _weight = _weight + getSoldiersWeight(1, ctld.MANPAD_WEIGHT)
                 else
-                    _unitType = "Soldier M4"
+                    _unitType = "Soldier M4 GRG"
                     _weight = _weight + getSoldiersWeight(1, ctld.RIFLE_WEIGHT)
                 end
             else
@@ -2103,7 +2103,7 @@ function ctld.loadTroops(_heli, _troops, _numberOrTemplate)
 
     --number doesnt apply to vehicles
     if _numberOrTemplate == nil  or (type(_numberOrTemplate) ~= "table" and type(_numberOrTemplate) ~= "number")  then
-        _numberOrTemplate = ctld.getTransportLimit(_heli:getTypeName())
+        _numberOrTemplate = ctld.numberOfTroops
     end
 
     if _onboard == nil then
